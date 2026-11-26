@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 335 172" fill="none">
+<title>Rocket — animation frame</title>
+<path d="M46.0 0v172" stroke="#7190b1" opacity=".33" />
+<path d="M117.0 0v172" stroke="#7190b1" opacity=".33" stroke-dasharray="5 5"/>
+<path d="M251.4 0v172" stroke="#7190b1" opacity=".33" stroke-dasharray="5 5"/>
+<circle cx="111.3" cy="116.0" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<text x="111.3" y="119.3" text-anchor="middle" fill="#f1f6ff" font-family="Arial,sans-serif" font-weight="700" font-size="9.5">L</text>
+<circle cx="138.2" cy="116.0" r="12.8" fill="none" stroke="#75acff" stroke-opacity=".55" stroke-width="1"/>
+<circle cx="138.2" cy="116.0" r="9.7" fill="#216bc7" stroke="#b4d4ff" stroke-width="1.4"/>
+<text x="138.2" y="119.3" text-anchor="middle" fill="#f1f6ff" font-family="Arial,sans-serif" font-weight="700" font-size="9.5">J</text>
+<circle cx="165.0" cy="116.0" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<text x="165.0" y="119.3" text-anchor="middle" fill="#f1f6ff" font-family="Arial,sans-serif" font-weight="700" font-size="9.5">L</text>
+<circle cx="220.7" cy="116.0" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<circle cx="246.6" cy="116.0" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<circle cx="62.3" cy="116.0" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<text x="62.3" y="119.3" text-anchor="middle" fill="#f1f6ff" font-family="Arial,sans-serif" font-weight="700" font-size="9.5">H</text>
+<circle cx="155.4" cy="45.9" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<text x="155.4" y="49.2" text-anchor="middle" fill="#f1f6ff" font-family="Arial,sans-serif" font-weight="700" font-size="9.5">9</text>
+<circle cx="107.4" cy="116.0" r="3.6" fill="#f5f8ff" stroke="#10223a"/>
+</svg>

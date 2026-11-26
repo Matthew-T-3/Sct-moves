@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Line-out: Rocket</title>
+<style>
+:root{--bg:#f4f6f2;--fg:#1c2a1f;--pitch:#d9e8d2;--line:#ffffff;--team:#1f5fa8;--jump:#e8590c;--ball:#f2b100;--muted:#5b6b5e;--card:#ffffff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a14;--fg:#e8f0ea;--pitch:#1f3324;--line:#7f9a85;--team:#5aa0ee;--jump:#ff8a4c;--ball:#ffd24a;--muted:#9bb0a0;--card:#1a251d}}
+:root[data-theme="dark"]{--bg:#121a14;--fg:#e8f0ea;--pitch:#1f3324;--line:#7f9a85;--team:#5aa0ee;--jump:#ff8a4c;--ball:#ffd24a;--muted:#9bb0a0;--card:#1a251d}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:460px;margin:0 auto;padding:14px}
+h1{font-size:20px;margin:4px 0 2px}
+.sub{color:var(--muted);font-size:13px;margin:0 0 10px}
+svg{width:100%;height:auto;display:block;border-radius:12px;background:var(--pitch)}
+#cap{background:var(--card);border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px;min-height:68px}
+.tabs{display:flex;gap:8px;margin:0 0 10px}
+.tabs button{background:var(--card);color:var(--fg);flex:1;padding:9px 4px;font-size:14px}
+.tabs button.on{background:var(--jump);color:#fff}
+#cap b{color:var(--jump)}
+.sec{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:2px 0 6px}
+#four button{flex:0 0 calc((100% - 32px)/5)}
+.ctl{display:flex;gap:8px;align-items:center}
+button{background:var(--team);color:#fff;border:0;border-radius:8px;padding:9px 14px;font-size:15px;cursor:pointer}
+input[type=range]{flex:1}
+.key{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin-top:10px}
+.key i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:middle}
+</style>
+<link rel="stylesheet" href="../../assets/lineout-player.css">
+</head>
+<body>
+<main>
+<h1 id="h1">Line-out: “Rocket”</h1>
+<p class="sub" id="sub"></p>
+<div class="sec">5-man</div>
+<div class="tabs"><button id="m1" class="on">1 · Rocket</button><button id="m2">2 · Missile</button><button id="m3">3 · Mortar</button><button id="m4">4 · Role</button></div>
+<div class="tabs" id="opts" style="display:none"><button id="o1">1 · Front</button><button id="o2">2 · Middle</button><button id="o4">2A · Dummy</button><button id="o3">3 · Back</button></div>
+<div class="sec">4-man</div>
+<div class="tabs" id="four"><button id="m6">1 · Quick</button><button id="m7">2 · Three</button><button id="m8">3 · Wolf</button><button id="m9">4 · M Slip</button><button id="m10">5 · M Slip 1</button></div>
+<div class="sec">6-man</div>
+<div class="tabs"><button id="m11">1 · Front</button><button id="m12">2 · Middle</button><button id="m5">Tank</button></div>
+<svg id="s" viewBox="0 0 360 440" role="img" aria-label="Animated top-down line-out diagram">
+  <line x1="0" y1="414" x2="360" y2="414" stroke="var(--line)" stroke-width="3"/>
+  <line x1="0" y1="340" x2="360" y2="340" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="6 6"/>
+  <line x1="0" y1="200" x2="360" y2="200" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="6 6"/>
+  <text x="8" y="433" font-size="9" fill="var(--muted)">TOUCH</text>
+  <text x="352" y="334" font-size="9" fill="var(--muted)" text-anchor="end">5m</text>
+  <text x="352" y="194" font-size="9" fill="var(--muted)" text-anchor="end">15m</text>
+  <g id="pl"></g>
+  <line id="tick" stroke="var(--fg)" stroke-width="3" stroke-linecap="round" opacity="0"/>
+  <text id="call" x="203" y="392" font-size="15" font-weight="800" fill="var(--jump)" text-anchor="start" opacity="0">ROCKET!</text>
+  <circle id="ball" r="5" fill="var(--ball)" stroke="#000" stroke-opacity=".5" stroke-width="1"/>
+</svg>
+<div id="cap"></div>
+<div class="ctl">
+  <button id="pp">Pause</button>
+  <button id="rp">Replay</button>
+  <input id="sl" type="range" min="0" max="7000" step="10" value="0" aria-label="Timeline">
+</div>
+<div class="key">
+  <span><i style="background:var(--jump)"></i>Jumper</span>
+  <span><i style="background:var(--team)"></i>Lifters / line</span>
+  <span><i style="background:var(--ball)"></i>Ball</span>
+  <span>H hooker · 9 scrum-half</span>
+</div>
+</main>
+<script>
+var X=185,move=1;
+var Y5={L1:350,J:320,L2:290,B1:260,B2:230,B3:200},NUM={L1:"1",J:"4",L2:"8",B1:"5",B2:"6",B3:"3",H:"2",N:"9"};
+var clamp=function(x,a,b){return Math.min(b,Math.max(a,x))};
+var seg=function(t,a,b){return clamp((t-a)/(b-a),0,1)};
+var ease=function(p){return p*p*(3-2*p)};
+var lerp=function(a,b,p){return a+(b-a)*p};
+var P={
+ L1:{x:X,y:346,l:"L",run:1},J:{x:X,y:318,l:"J",run:1},L2:{x:X,y:290,l:"L",run:1},
+ B1:{x:X,y:232,l:"",run:1},B2:{x:X,y:205,l:"",run:1},B3:{x:X,y:200,l:"",run:1},
+ H:{x:X,y:397,l:"H",run:0},N:{x:112,y:300,l:"9",run:0}
+};
+var CFG={
+ 1:{D:7000,jk:"J",h:[2300,3000,4500,5200],th:[3000,3900],ps:[5300,6200],name:"ROCKET",sub:"5-man line-out · loaded front 3-pod goes straight up",
+  caps:[[0,"<b>Set-up.</b> The line runs straight out from touch, in front of the hooker. The front 3-pod is already loaded — lifters either side of the jumper."],[1200,"<b>Call.</b> Hooker calls “ROCKET”."],[2300,"<b>Move.</b> Jumper goes straight up — no dummy, no step."],[3000,"<b>Throw.</b> Hooker throws straight down the line to the jumper."],[3900,"<b>Catch.</b> Jumper wins it at the top."],[4500,"<b>Lower.</b> Lifters bring the jumper down with the ball."],[5300,"<b>Deliver.</b> Ball goes to the scrum-half."]]},
+ 2:{D:7600,jk:"J",h:[3800,4400,5700,6200],th:[4400,5200],ps:[6300,7000],name:"MISSILE",tgt:[272,245,218],sub:"1st man dummies a lift on the 2nd, then runs through to lift the 3rd with the 4th",
+  caps:[[0,"<b>Set-up.</b> Same as before — front 3-pod loaded, line straight out from the hooker."],[1200,"<b>Call.</b> Hooker calls “MISSILE”."],[2300,"<b>Dummy.</b> The 1st man fakes a lift on the 2nd man."],[3000,"<b>Run through.</b> The 1st man runs past the 2nd to the 3rd man. The 4th man closes in from behind."],[3800,"<b>Lift.</b> The 1st and 4th men lift the 3rd man."],[4400,"<b>Throw.</b> Hooker throws to the middle."],[5200,"<b>Catch.</b> Jumper wins it at the top."],[5700,"<b>Lower.</b> Lifters bring him down with the ball."],[6300,"<b>Deliver.</b> Ball goes to the scrum-half."]]},
+ 3:{D:7600,jk:"B1",h:[3800,4400,5700,6200],th:[4400,5200],ps:[6300,7000],name:"MORTAR",tgt:[238,211,184],sub:"Same as Missile — but the pod forms at the back of the line",
+  caps:[[0,"<b>Set-up.</b> Same as before — front 3-pod loaded, line straight out from the hooker."],[1200,"<b>Call.</b> Hooker calls “MORTAR”."],[2300,"<b>Dummy.</b> Front lifter dummies. Back lifter turns around."],[3000,"<b>Close.</b> Back lifter runs to the back of the line and meets the back two."],[3800,"<b>Lift.</b> The back pod lifts the jumper."],[4400,"<b>Throw.</b> Hooker throws all the way to the back."],[5200,"<b>Catch.</b> Jumper wins it at the top."],[5700,"<b>Lower.</b> Lifters bring him down with the ball."],[6300,"<b>Deliver.</b> Ball goes to the scrum-half."]]}
+ ,4:{D:9000,jk:"J",h:[5400,6000,7400,8000],th:[6000,6900],ps:[8100,8900],name:"ROLE",sub:"",caps:[],calls:[]}
+ ,6:{D:7400,jk:"J",h:[3700,4300,5600,6100],th:[4300,5100],ps:[6200,6900],name:"QUICK",sub:"4-man line-out · 2nd and 3rd men run to the front · 1st and 3rd lift the 2nd",calls:[[1900,2900,"QUICK!"]],
+  caps:[[0,"<b>Set-up.</b> Four-man line-out. Hooker at touch, the 1st man at the front, and the 2nd, 3rd and 4th men walk in to the middle of the line-out."],[1900,"<b>Call.</b> Hooker calls “QUICK”."],[2600,"<b>Quick.</b> The 2nd and 3rd men run to the front to join the 1st man."],[3700,"<b>Lift.</b> The 1st and 3rd men lift the 2nd man."],[4300,"<b>Throw.</b> Hooker throws to the front."],[5100,"<b>Catch.</b> The 2nd man wins it at the top."],[5600,"<b>Lower.</b> Lifters bring him down with the ball."],[6200,"<b>Deliver.</b> Ball goes to the scrum-half."]]}
+ ,7:{D:8400,jk:"J",h:[4700,5300,6600,7100],th:[5300,6100],ps:[7200,7900],name:"THREE",sub:"4-man line-out · dummy Quick · back to the middle, 2nd and 4th lift the 3rd",calls:[[1900,2900,"THREE!"]],
+  caps:[[0,"<b>Set-up.</b> Four-man line-out. Hooker at touch, the 1st man at the front, and the 2nd, 3rd and 4th men walk in to the middle of the line-out."],[1900,"<b>Call.</b> Hooker calls “THREE”."],[2600,"<b>Dummy.</b> The 2nd and 3rd men run to the front as if it’s a Quick."],[3600,"<b>Back.</b> They go back to the middle, where the 4th man meets them."],[4700,"<b>Lift.</b> The 2nd and 4th men lift the 3rd man."],[5300,"<b>Throw.</b> Hooker throws to the middle."],[6100,"<b>Catch.</b> The 3rd man wins it at the top."],[6600,"<b>Lower.</b> Lifters bring him down with the ball."],[7200,"<b>Deliver.</b> Ball goes to the scrum-half."]]}
+ ,8:{D:7000,jk:"B1",h:[99999,100000,100001,100002],th:[4700,5300],ps:[99999,99999],name:"WOLF",sub:"4-man line-out · decoy lift in the middle · 4th man runs around to take it at the front",calls:[[1900,2900,"WOLF!"]],
+  caps:[[0,"<b>Set-up.</b> Four-man line-out. Hooker at touch, the 1st man stands 1m in front of the 5m line, and the 2nd, 3rd and 4th men walk in to the middle of the line-out."],[1900,"<b>Call.</b> Hooker calls “WOLF”."],[2600,"<b>Run in.</b> The 1st man runs to the 2nd and 3rd men in the middle."],[3500,"<b>Decoy lift.</b> The 1st and 3rd men lift the 2nd man in the middle."],[3900,"<b>Around.</b> The 4th man runs around the pod to the front."],[4700,"<b>Throw.</b> Hooker throws to the front."],[5300,"<b>Catch.</b> The 4th man takes it on the run."],[5700,"<b>Keep going.</b> He keeps running with the ball."]]}
+ ,9:{D:7400,jk:"L2",h:[3700,4300,5600,6100],th:[4300,5100],ps:[6200,6900],name:"M SLIP",sub:"4-man line-out · 3rd man slips in front of the 2nd · 1st and 2nd lift the 3rd",calls:[[1900,2900,"M SLIP!"]],
+  caps:[[0,"<b>Set-up.</b> Four-man line-out. Hooker at touch, the 1st man at the front, and the 2nd, 3rd and 4th men walk in to the middle of the line-out."],[1900,"<b>Call.</b> Hooker calls “M SLIP”."],[2600,"<b>Slip.</b> The 3rd man slips in front of the 2nd man."],[3700,"<b>Lift.</b> The 1st and 2nd men lift the 3rd man."],[4300,"<b>Throw.</b> Hooker throws to the front."],[5100,"<b>Catch.</b> The 3rd man wins it at the top."],[5600,"<b>Lower.</b> Lifters bring him down with the ball."],[6200,"<b>Deliver.</b> Ball goes to the scrum-half."]]}
+ ,10:{D:8500,jk:"L2",h:[4800,5400,6700,7200],th:[5400,6200],ps:[7300,8000],name:"M SLIP 1",sub:"4-man line-out · dummy M Slip · 1st man runs through, 1st and 4th lift the 2nd in the middle",calls:[[1900,2900,"M SLIP 1!"]],
+  caps:[[0,"<b>Set-up.</b> Four-man line-out. Hooker at touch, the 1st man at the front, and the 2nd, 3rd and 4th men walk in to the middle of the line-out."],[1900,"<b>Call.</b> Hooker calls “M SLIP 1”."],[2600,"<b>Dummy.</b> The 3rd man slips in front of the 2nd man, as if it’s an M Slip."],[3500,"<b>Through.</b> The 1st man runs straight through the line to the middle while the 3rd man steps out of the way."],[4800,"<b>Lift.</b> The 1st and 4th men lift the 2nd man in the middle."],[5400,"<b>Throw.</b> Hooker throws to the middle."],[6200,"<b>Catch.</b> The 2nd man wins it at the top."],[6700,"<b>Lower.</b> Lifters bring him down with the ball."],[7300,"<b>Deliver.</b> Ball goes to the scrum-half."]]}
+ ,5:{D:9600,jk:"B1",h:[3800,4400,5700,6200],th:[4400,5200],ps:[99999,99999],name:"TANK",sub:"6-man line-out · 8 and 3 lift 5, then it becomes a maul",
+  caps:[[0,"<b>Set-up.</b> Six-man line-out. Hooker (2) at touch, then 1, 4, 8, 5, 6 and 3 down the line."],[1200,"<b>Call.</b> Hooker calls “TANK”."],[2300,"<b>Make room.</b> Number 6 jumps to the side so 3 can run past him."],[2600,"<b>Tank.</b> Number 3 runs up from the back to join 8 and lift 5."],[3800,"<b>Lift.</b> 8 and 3 lift number 5."],[4400,"<b>Throw.</b> Hooker (2) throws to 5."],[5200,"<b>Catch.</b> Number 5 wins it at the top."],[5700,"<b>Lower.</b> The pod brings him down with the ball — the front of the maul."],[6300,"<b>Maul.</b> Numbers 4 and 6 hit the middle of the pod."],[7000,"<b>Maul.</b> Numbers 2 and 1 hit in at the back. The ball is put back to 6, then to 1."],[8000,"<b>Drive.</b> The maul drives with the ball at the back."]]}
+ ,11:{D:9600,jk:"J",h:[3200,3800,5100,5600],th:[3800,4600],ps:[99999,99999],name:"1",sub:"6-man line-out · 1 and 8 lift 4 at the front, then a standard maul",
+  caps:[[0,"<b>Set-up.</b> Same six-man numbering as Tank: 1, 4, 8, 5, 6, 3, with hooker 2 at touch."],[1200,"<b>Call.</b> Hooker calls ‘1’."],[2600,"<b>Set.</b> 1 and 8 prepare to lift 4 at the front."],[3200,"<b>Lift.</b> Numbers 1 and 8 lift number 4."],[3800,"<b>Throw.</b> Hooker throws to 4 at the front."],[4600,"<b>Catch.</b> 4 wins the ball."],[5100,"<b>Lower.</b> 1 and 8 bring 4 down."],[5800,"<b>Maul.</b> The next two forwards bind onto the pod, just as in Tank."],[7000,"<b>Transfer.</b> The forwards and hooker join at the back; the ball passes from 4 to 6, then directly to hooker 2."],[8000,"<b>Drive.</b> The maul drives forward with the ball transferred to hooker 2 at the back."]]}
+ ,12:{D:9600,jk:"B1",h:[3200,3800,5100,5600],th:[3800,4600],ps:[99999,99999],name:"2",sub:"6-man line-out · 8 and 6 lift 5 in the middle, then a standard maul",
+  caps:[[0,"<b>Set-up.</b> Same six-man numbering as Tank: 1, 4, 8, 5, 6, 3, with hooker 2 at touch."],[1200,"<b>Call.</b> Hooker calls ‘2’."],[2600,"<b>Set.</b> 8 and 6 prepare to lift 5 in the middle."],[3200,"<b>Lift.</b> Numbers 8 and 6 lift number 5."],[3800,"<b>Throw.</b> Hooker throws to 5 in the middle."],[4600,"<b>Catch.</b> 5 wins the ball."],[5100,"<b>Lower.</b> 8 and 6 bring 5 down."],[5800,"<b>Maul.</b> The next two forwards bind onto the pod, just as in Tank."],[7000,"<b>Transfer.</b> The forwards and hooker join at the back; the ball passes from 5 to 4, then directly to hooker 2."],[8000,"<b>Drive.</b> The maul drives forward with the ball transferred to hooker 2 at the back."]]}
+
+};
+var g=document.getElementById("pl"),NS="http://www.w3.org/2000/svg";
+Object.keys(P).forEach(function(k){
+ var p=P[k];
+ p.ring=document.createElementNS(NS,"circle");p.ring.setAttribute("fill","none");p.ring.setAttribute("stroke","var(--jump)");p.ring.setAttribute("stroke-width","2");
+ p.c_=document.createElementNS(NS,"circle");
+ p.t=document.createElementNS(NS,"text");p.t.setAttribute("text-anchor","middle");p.t.setAttribute("font-size","11");p.t.setAttribute("font-weight","700");p.t.setAttribute("fill","#fff");
+ g.appendChild(p.ring);g.appendChild(p.c_);g.appendChild(p.t);
+});
+var cap=document.getElementById("cap"),ball=document.getElementById("ball"),call=document.getElementById("call"),sl=document.getElementById("sl"),tick=document.getElementById("tick");
+var lastCap=-1;
+var opt=1;
+function jkey(t){if(move===10)return t>=3500?"J":"L2";if(move===9)return "L2";if(move===8)return "B1";if(move===7)return t>=3600?"L2":"J";return move===4&&t>=4300?["L2","J","B1","J"][opt-1]:(move===2&&t>=3000?"L2":CFG[move].jk)}
+function lab(k,t,isJ){
+ if(move===5||move===11||move===12)return NUM[k];
+ if(move===10){if(isJ)return "J";if(k==="L1")return "L";if(k==="J")return t>=2600?"L":"";if(k==="B1")return t>=3500?"L":"";return ""}
+ if(move===9){if(isJ)return "J";if(k==="L1")return "L";if(k==="J")return t>=2600?"L":"";return ""}
+ if(move===8){if(isJ)return "J";if(k==="L1")return "L";if(k==="L2")return t>=2600?"L":"";return ""}
+ if(move===7){if(isJ)return "J";var bk=t>=3600;if(k==="L1")return bk?"":"L";if(k==="J"||k==="B1")return bk?"L":"";if(k==="L2")return t>=2600&&!bk?"L":"";return ""}
+ if(move===6){if(isJ)return "J";if(k==="L1")return "L";if(k==="L2")return t>=2600?"L":"";return ""}
+ if(isJ)return "J";
+ var late=move===4&&t>=4300,pod=dum()&&t>=3000;
+ if(k==="J")return late?(opt!==2?"L":""):(pod&&move===2?"":"");
+ if(k==="B1")return ((late&&(opt===2||opt===4))||pod)?"L":"";
+ if(k==="B2")return ((late&&opt===3)||move===3)?"L":"";
+ return P[k].l;
+}
+function dum(){return move===2||move===3}
+function pos(k,t){
+ var p=P[k],x=p.run?lerp(110,X,ease(seg(t,1,1200))):p.x,y=p.y;
+ if((move===5||move===11||move===12)&&Y5[k])y=Y5[k];
+ if(dum()){
+  var c=ease(seg(t,3000,3800));
+  if(k==="L1"&&move===3)y-=9*Math.sin(Math.PI*seg(t,2300,3000));
+  if(move===2){
+   // First man dummies on second, then runs straight through the line to lift third.
+   var pass=ease(seg(t,3000,3800));
+   if(k==="L1"){
+    y=lerp(346,318,pass)-9*Math.sin(Math.PI*seg(t,2300,3000));
+   }
+   if(k==="J")x-=38*pass; // Second man clears the channel after the dummy.
+   if(k==="B1")y=lerp(232,262,pass); // Fourth man becomes rear lifter.
+  }
+  else{if(k==="L2")y=lerp(290,238,c);if(k==="B1")y=lerp(232,211,c);if(k==="B2")y=lerp(205,184,c)}
+ }
+ if(move===4){
+  var a=ease(seg(t,2300,3500)),b=ease(seg(t,4300,5400));
+  if(k==="B1")y=lerp(212,opt===2?228:opt===3?199:212,b);
+  if(k==="B2")y=lerp(186,opt===3?172:186,b);
+  if(k==="L2")y=lerp(290,opt===1?318:opt===2?282:290,b);
+  if(k==="J"){
+   if(t<4300){y=lerp(318,255,a);x+=34*Math.sin(Math.PI*a)}
+   else{var ty=opt===1?290:opt===2?255:226;y=lerp(255,ty,b)}
+  }
+ }
+ if(move===4&&opt===4){
+  var d1=ease(seg(t,4300,5100)),d2=ease(seg(t,5400,6600)),bl=Math.sin(Math.PI*d2)*34;
+  if(k==="L2"){y=lerp(lerp(290,282,d1),250,d2);x+=bl}
+  if(k==="B1")y=lerp(lerp(212,228,d1),290,d2);
+  if(k==="J"&&t>=4300)y=lerp(255,318,d2);
+ }
+ if(move===11||move===12){
+  // Use the original Tank animation style: players feed into a compact pod
+  // in two staggered waves before the whole maul drives to the right.
+  // The line-out order is unchanged: 1, 4, 8, 5, 6, 3.
+  var prepare=ease(seg(t,2600,3200));
+  var middle=ease(seg(t,5900,6900));
+  var rear=ease(seg(t,6800,7700));
+  var dr=45*ease(seg(t,8000,9000));
+  var targets,backKeys,centre;
+  if(move===11){
+   // Call 1: 1 and 8 lift 4 at the front.
+   if(k==="L1")y=lerp(350,347,prepare);
+   if(k==="L2")y=lerp(290,293,prepare);
+   centre=318;
+   targets={L1:[185,333],J:[185,318],L2:[185,303],B1:[157,303],B2:[157,330],B3:[129,316],H:[129,344]};
+   backKeys=["B3","H"];
+  }else{
+   // Call 2: 8 and 6 lift 5 in the middle.
+   if(k==="L2")y=lerp(290,287,prepare);
+   if(k==="B2")y=lerp(230,233,prepare);
+   centre=260;
+   targets={L2:[185,278],B1:[185,260],B2:[185,242],J:[157,286],B3:[157,250],L1:[129,264],H:[129,293]};
+   backKeys=["L1","H"];
+  }
+  if(targets[k]){
+   var target=targets[k];
+   // The lifted trio is already positioned; others join as Tank does.
+   var f=backKeys.indexOf(k)>=0?rear:
+       (k===(move===11?"B1":"J")||k===(move===11?"B2":"B3")?middle:0);
+   x=lerp(x,target[0],f)+dr;
+   y=lerp(y,target[1],f);
+  }
+  if(k==="N"){x=78+dr;y=centre;}
+ }
+ if(move===5){
+  var s1=ease(seg(t,2300,3000)),s2=ease(seg(t,2600,3600)),m1=ease(seg(t,6300,7100)),m2=ease(seg(t,7000,7800)),dr=45*ease(seg(t,8000,9000)),x0=x;
+  if(k==="B3")y=lerp(200,232,s2);
+  if(k==="L2")y=lerp(290,288,s1);
+  if(k==="B2"){x=lerp(lerp(x0,x0-40,s1),157,m1);y=lerp(230,246,m1)}
+  if(k==="J"){x=lerp(x0,157,m1);y=lerp(320,274,m1)}
+  if(k==="L1"){x=lerp(x0,129,m2);y=lerp(350,246,m2)}
+  if(k==="H"){x=lerp(x0,129,m2);y=lerp(397,274,m2)}
+  if(k==="N"){x=78+dr;y=262}else x+=dr;
+ }
+ if(move===8){
+  var w=ease(seg(t,1,1800)),f=ease(seg(t,2600,3500)),a=ease(seg(t,3600,5000)),o=seg(t,5000,6600);
+  if(k==="L1"){x=X;y=lerp(324,308,f)}
+  if(k==="J"){x=lerp(110,X,w);y=280}
+  if(k==="L2"){x=lerp(110,X,w);y=252}
+  if(k==="B1"){x=lerp(110,X,w)+44*Math.sin(Math.PI*a)-95*o;y=lerp(224,330,a)+6*o}
+ }
+ if(move===7){
+  var w=ease(seg(t,1,1800)),f=ease(seg(t,2600,3400)),b=ease(seg(t,3600,4600));
+  if(k==="L1")x=X;
+  if(k==="J"){x=lerp(110,X,w);y=lerp(lerp(280,318,f),286,b)}
+  if(k==="L2"){x=lerp(110,X,w);y=lerp(lerp(252,290,f),258,b)}
+  if(k==="B1"){x=lerp(110,X,w);y=lerp(224,230,b)}
+ }
+ if(move===10){
+  var w=ease(seg(t,1,1800)),q=ease(seg(t,2600,3500)),s=ease(seg(t,3500,4200)),r1=ease(seg(t,3600,4400)),m=ease(seg(t,3500,4400));
+  if(k==="L1"){x=X;y=lerp(346,298,r1)}
+  if(k==="J"){x=lerp(110,X,w);y=lerp(lerp(280,290,q),270,m)}
+  if(k==="L2"){x=lerp(110,X,w)+36*Math.sin(Math.PI*q)+44*s;y=lerp(252,318,q)}
+  if(k==="B1"){x=lerp(110,X,w);y=lerp(224,242,m)}
+ }
+ if(move===9){
+  var w=ease(seg(t,1,1800)),q=ease(seg(t,2600,3600));
+  if(k==="L1")x=X;
+  if(k==="J"){x=lerp(110,X,w);y=lerp(280,290,q)}
+  if(k==="L2"){x=lerp(110,X,w)+36*Math.sin(Math.PI*q);y=lerp(252,318,q)}
+  if(k==="B1"){x=lerp(110,X,w);y=224}
+ }
+ if(move===6){
+  var w=ease(seg(t,1,1800)),q=ease(seg(t,2600,3600));
+  if(k==="L1")x=X;
+  if(k==="J"){x=lerp(110,X,w);y=lerp(280,318,q)}
+  if(k==="L2"){x=lerp(110,X,w);y=lerp(252,290,q)}
+  if(k==="B1"){x=lerp(110,X,w);y=224}
+ }
+ return [x,y];
+}
+function render(t){
+ var c=CFG[move],jk=jkey(t),h=ease(seg(t,c.h[0],c.h[1]))-ease(seg(t,c.h[2],c.h[3]));
+ if(move===4&&opt===4)h+=0.4*Math.sin(Math.PI*seg(t,4700,5300));
+ if(move===8)h=0;
+ var hd=move===8?ease(seg(t,3500,4100))-ease(seg(t,5000,5500)):0;
+ var dm=dum()?Math.sin(Math.PI*seg(t,2300,3000)):0;
+ Object.keys(P).forEach(function(k){
+  var p=P[k],q=pos(k,t),x=q[0],y=q[1],r=12,isJ=(k===jk)&&!(move>=6&&t<2600);
+  if((k==="B3"&&move!==5&&move!==11&&move!==12)||(k==="B2"&&move>=6&&move!==11&&move!==12)){p.c_.setAttribute("r",0);p.t.textContent="";p.ring.setAttribute("opacity",0);return}
+  if(isJ)r=12*(1+0.75*h);
+  else if(move===2&&k==="J")r=12*(1+0.45*Math.sin(Math.PI*seg(t,2300,3000)));
+   else if(move===8&&k==="J")r=12*(1+0.6*hd);
+  else if(move===8&&(k==="L1"||k==="L2"))r=12*(1+0.1*hd);
+  else if(move===6&&(k==="L1"||k==="L2"))r=12*(1+0.1*h);
+  else if(move===7&&(k==="J"||k==="B1"))r=12*(1+0.1*h);
+  else if(move===9&&(k==="L1"||k==="J"))r=12*(1+0.1*h);
+  else if(move===10&&(k==="L1"||k==="B1"))r=12*(1+0.1*h);
+  else if(k==="L1")r=12*(1+0.15*dm);
+  else if(k==="L2"||k==="B2")r=12*(1+0.1*h*(dum()?1:0));
+  if(move===5&&k==="B2")r=12*(1+0.35*Math.sin(Math.PI*seg(t,2300,3000)));
+  p.c_.setAttribute("fill",isJ?"var(--jump)":"var(--team)");
+  p.c_.setAttribute("cx",x);p.c_.setAttribute("cy",y);p.c_.setAttribute("r",r);
+  p.t.textContent=lab(k,t,isJ);
+  p.t.setAttribute("x",x);p.t.setAttribute("y",y+4);
+  p.ring.setAttribute("cx",x);p.ring.setAttribute("cy",y);
+  p.ring.setAttribute("r",isJ?r+5:r+3);
+  p.ring.setAttribute("stroke-dasharray",isJ?"none":"3 3");
+  p.ring.setAttribute("opacity",isJ?(move===8?ease(seg(t,4700,5300)):h):(move===8&&k==="J"?hd:(k==="L1"?dm:0)));
+ });
+ var q2=pos(move===2?"J":"L2",t),a=dum()?ease(seg(t,2300,3000))*Math.PI:0,d=12+7;
+ tick.setAttribute("x1",q2[0]+Math.sin(a)*6);tick.setAttribute("y1",q2[1]+Math.cos(a)*6);
+ tick.setAttribute("x2",q2[0]+Math.sin(a)*d);tick.setAttribute("y2",q2[1]+Math.cos(a)*d);
+ tick.setAttribute("opacity",dum()?1:0);
+ var jp=pos(jk,t),H=pos("H",t),N=pos("N",t),bx,by,br;
+ if(move===5&&t>=7200){
+  // Tank retains its exact original ball movement and maul animation.
+  var q5=pos("B1",t),q6=pos("B2",t),q1=pos("L1",t),w1=ease(seg(t,7200,7600)),w2=ease(seg(t,7900,8300));
+  if(t<7900){bx=lerp(q5[0],q6[0],w1);by=lerp(q5[1],q6[1],w1);br=5*(1+0.5*Math.sin(Math.PI*w1))}
+  else{bx=lerp(q6[0],q1[0],w2);by=lerp(q6[1],q1[1],w2);br=5*(1+0.5*Math.sin(Math.PI*w2))}
+ }
+ else if((move===11||move===12)&&t>=7000){
+  // Direct transfer: call 1 goes 4 -> 6 -> 2; call 2 goes 5 -> 4 -> 2.
+  // No intermediate pass via 3 (call 1) or 1 (call 2).
+  var receiver=pos(move===11?"B2":"J",t);
+  if(t<7700){var w=ease(seg(t,7000,7700));bx=lerp(jp[0],receiver[0],w);by=lerp(jp[1],receiver[1],w)}
+  else if(t<8500){var w=ease(seg(t,7700,8500));bx=lerp(receiver[0],H[0],w);by=lerp(receiver[1],H[1],w)}
+  else{bx=H[0];by=H[1]}
+  br=5;
+ }
+ else if(t<c.th[0]){bx=H[0];by=H[1]-15;br=5}
+ else if(t<c.th[1]){var p=ease(seg(t,c.th[0],c.th[1]));bx=lerp(H[0],jp[0],p);by=lerp(H[1]-15,jp[1],p);br=5*(1+1.1*Math.sin(Math.PI*p)+0.75*h*p)}
+ else if(t<c.ps[0]){bx=jp[0];by=jp[1];br=5*(1+0.75*h)}
+ else if(t<c.ps[1]){var u=ease(seg(t,c.ps[0],c.ps[1]));bx=lerp(jp[0],N[0],u);by=lerp(jp[1],N[1],u);br=5*(1+0.9*Math.sin(Math.PI*u))}
+ else{bx=N[0]+14;by=N[1];br=5}
+ ball.setAttribute("cx",bx);ball.setAttribute("cy",by);ball.setAttribute("r",br);
+ var cl=c.calls||[[1200,2300,c.name+"!"]],co=0;
+ cl.forEach(function(w){if(t>=w[0]&&t<w[1]){call.textContent=w[2];co=1}});
+ call.setAttribute("opacity",co);
+ var ci=0;for(var i=0;i<c.caps.length;i++){if(t>=c.caps[i][0])ci=i}
+ if(ci!==lastCap){cap.innerHTML=c.caps[ci][1];lastCap=ci}
+ sl.value=t;
+}
+var t=0,playing=true,last=performance.now(),pp=document.getElementById("pp");
+function tickLoop(n){
+ var dt=n-last;last=n,D=CFG[move].D;
+ if(playing){t+=dt;if(t>=D){t=D;playing=false;pp.textContent="Play"}render(t)}
+ requestAnimationFrame(tickLoop);
+}
+var D=7000;
+function setOpt(c){
+ var nm=["ONE","TWO","THREE","TWO A"][opt-1],ol=["1","2","3","2A"][opt-1],d=["The middle man runs back to the front and becomes the back lifter — the old back lifter steps in as the jumper.","The middle man stays put — the two nearest lifters come in and lift him in the middle.","The middle man runs to the back and becomes the front lifter — the first of the back two is the jumper.","The 2nd and 4th men close in on the middle man for a dummy lift."][opt-1];
+ c.sub="Role call · option "+ol;
+ c.calls=[[1200,2300,"ROLE!"],[3500,4300,nm+"!"]];
+ var A=[[0,"<b>Set-up.</b> Loaded pod at the front, two at the back."],[1200,"<b>Call.</b> Hooker calls “ROLE”."],[2300,"<b>Role.</b> The front jumper runs around the back lifter to the middle."],[3500,"<b>Number.</b> Hooker calls “"+nm+"”."],[4300,"<b>Option "+ol+".</b> "+d]];
+ if(opt===4){
+  c.D=10500;c.h=[6600,7200,8600,9200];c.th=[7200,8100];c.ps=[9300,10100];
+  c.caps=A.concat([[5400,"<b>Run.</b> The 3rd and 4th men run straight through the line to the front; the 2nd man goes around them."],[6600,"<b>Lift.</b> The 1st and 4th men lift the 3rd man."],[7200,"<b>Throw.</b> Hooker throws to the front."],[8100,"<b>Catch.</b> Jumper wins it at the top."],[8600,"<b>Lower.</b> Lifters bring him down with the ball."],[9300,"<b>Deliver.</b> Ball goes to the scrum-half."]]);
+ }else{
+  c.D=9000;c.h=[5400,6000,7400,8000];c.th=[6000,6900];c.ps=[8100,8900];
+  c.caps=A.concat([[5400,"<b>Lift.</b> Jumper goes up."],[6000,"<b>Throw.</b> Hooker throws to the jumper."],[6900,"<b>Catch.</b> Jumper wins it at the top."],[7400,"<b>Lower.</b> Lifters bring him down with the ball."],[8100,"<b>Deliver.</b> Ball goes to the scrum-half."]]);
+ }
+}
+function setMove(m){
+ move=m;var c=CFG[m];if(m===4)setOpt(c);D=c.D;sl.max=D;t=0;playing=true;pp.textContent="Pause";last=performance.now();lastCap=-1;
+ document.getElementById("h1").textContent="Line-out: “"+c.name.charAt(0)+c.name.slice(1).toLowerCase()+"”";
+ document.getElementById("sub").textContent=c.sub;
+ document.getElementById("m1").className=m===1?"on":"";document.getElementById("m2").className=m===2?"on":"";document.getElementById("m3").className=m===3?"on":"";document.getElementById("m4").className=m===4?"on":"";document.getElementById("m5").className=m===5?"on":"";document.getElementById("m6").className=m===6?"on":"";document.getElementById("m7").className=m===7?"on":"";document.getElementById("m8").className=m===8?"on":"";document.getElementById("m9").className=m===9?"on":"";document.getElementById("m10").className=m===10?"on":"";document.getElementById("m11").className=m===11?"on":"";document.getElementById("m12").className=m===12?"on":"";document.getElementById("opts").style.display=m===4?"flex":"none";for(var o=1;o<5;o++)document.getElementById("o"+o).className=(m===4&&opt===o)?"on":"";
+ render(0);
+}
+pp.onclick=function(){if(t>=D)t=0;playing=!playing;pp.textContent=playing?"Pause":"Play";last=performance.now()};
+document.getElementById("rp").onclick=function(){setMove(move)};
+document.getElementById("m1").onclick=function(){setMove(1)};
+document.getElementById("m2").onclick=function(){setMove(2)};
+document.getElementById("m3").onclick=function(){setMove(3)};
+document.getElementById("m4").onclick=function(){setMove(4)};
+document.getElementById("m5").onclick=function(){setMove(5)};
+document.getElementById("m6").onclick=function(){setMove(6)};
+document.getElementById("m7").onclick=function(){setMove(7)};
+document.getElementById("m8").onclick=function(){setMove(8)};
+document.getElementById("m9").onclick=function(){setMove(9)};
+document.getElementById("m10").onclick=function(){setMove(10)};
+document.getElementById("m11").onclick=function(){setMove(11)};
+document.getElementById("m12").onclick=function(){setMove(12)};
+[1,2,3,4].forEach(function(n){document.getElementById("o"+n).onclick=function(){opt=n;setMove(4)}});
+sl.oninput=function(){playing=false;pp.textContent="Play";t=+sl.value;render(t)};
+setMove(1);requestAnimationFrame(tickLoop);
+</script>
+<script src="../../assets/lineout-player.js"></script>
+</body>
+</html>

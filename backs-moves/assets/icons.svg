@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+ <symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.4"/><path d="m16 16 4.4 4.4"/></symbol>
+ <symbol id="filter" viewBox="0 0 24 24"><path d="M3 6h9m5 0h4M3 17h4m5 0h9"/><circle cx="14.5" cy="6" r="2.5"/><circle cx="9.5" cy="17" r="2.5"/></symbol>
+ <symbol id="chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+ <symbol id="play" viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5Z"/></symbol>
+ <symbol id="board" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="16" rx="2"/><path d="M12 4v16m-9.5-4h3V8h-3m19 0h-3v8h3"/></symbol>
+ <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+ <symbol id="external" viewBox="0 0 24 24"><path d="M13 4h7v7m0-7-9 9m-1-8H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-4"/></symbol>
+ <symbol id="book" viewBox="0 0 24 24"><path d="M4 5.5c3-1.5 5-1.5 8 .5 3-2 5-2 8-.5v13c-3-1.5-5-1.5-8 .5-3-2-5-2-8-.5zm8 .5v13"/></symbol>
+ <symbol id="layers" viewBox="0 0 24 24"><path d="m3 7 9-4 9 4-9 4-9-4Zm0 5 9 4 9-4M3 17l9 4 9-4"/></symbol>
+</svg>

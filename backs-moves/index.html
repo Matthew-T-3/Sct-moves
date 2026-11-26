@@ -1,0 +1,64 @@
+
+
+<!doctype html>
+<html lang="en-IE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Backs Moves</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/shield.svg">
+  <link rel="preload" href="../assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/site.css">
+  <script defer src="../assets/moves.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to moves</a>
+<header class="topbar">
+  <div class="shell header-inner">
+    <a class="brand" href="../lineouts/" aria-label="St Andrews SCT Moves home">
+      <img src="../assets/shield.svg" alt="" width="38" height="44"><span class="wordmark"><strong>St Andrews SCT</strong><small>Moves</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Move categories">
+      <a href="../lineouts/">Lineouts</a>
+    
+      <a href="../backs-moves/" aria-current="page">Backs Moves</a>
+    
+      <a href="../team-moves/">Team Moves</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="shell main-shell" tabindex="-1">
+  <section class="masthead" aria-labelledby="page-title">
+    <img class="cover cover-backs-moves" src="../assets/covers/backs-moves.webp" alt="" fetchpriority="high">
+    <div class="saltire" aria-hidden="true"></div>
+    <div class="mast-text">
+      <h1 id="page-title">Backs Moves</h1>
+      <div class="mast-meta"><span><svg class="icon" width="17" height="17" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#book"></use></svg> 0 moves</span></div>
+    </div>
+  </section>
+
+  <section class="library" aria-labelledby="library-title">
+    <div class="tools-row">
+      <h2 id="library-title">Move library</h2>
+      <form class="filters" role="search" aria-label="Filter Backs Moves">
+        <label class="search-shell"><svg class="icon" width="19" height="19" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#search"></use></svg><span class="visually-hidden">Search moves</span><input id="move-search" type="search" placeholder="Search moves…" autocomplete="off" maxlength="160"></label>
+        <label class="select-shell tag-filter"><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#filter"></use></svg><span class="visually-hidden">Filter by tag</span><select id="tag-filter"><option value="">All tags</option></select><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#chevron"></use></svg></label>
+      </form>
+    </div>
+    <p id="result-status" class="filter-status visually-hidden" role="status" aria-live="polite" aria-atomic="true"></p>
+    
+      <div class="empty"><div class="empty-symbol"><svg class="icon" width="32" height="32" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#board"></use></svg></div>
+        <h3>No moves yet</h3>
+        <p>Add your first move by copying the template in<br><code>src/data/backs-moves.js</code>.</p>
+        <p class="empty-note">Put any video, diagram or animation in <code>public/media/</code>, then rebuild.</p>
+      </div>
+    
+  </section>
+</main>
+<footer class="footer"><div class="shell footer-inner"><div><img src="../assets/shield.svg" alt="" width="21" height="24"><span>St Andrews SCT</span></div><span>Moves</span></div></footer>
+<dialog id="move-dialog" aria-labelledby="move-title">
+  <button type="button" class="close-dialog" aria-label="Close move" autofocus><svg class="icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#close"></use></svg></button>
+  <div class="dialog-scroll"><div id="detail-content"></div></div>
+</dialog>
+</body></html>

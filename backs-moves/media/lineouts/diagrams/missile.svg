@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 335 172" fill="none">
+<title>Missile — animation frame</title>
+<path d="M46.0 0v172" stroke="#7190b1" opacity=".33" />
+<path d="M117.0 0v172" stroke="#7190b1" opacity=".33" stroke-dasharray="5 5"/>
+<path d="M251.4 0v172" stroke="#7190b1" opacity=".33" stroke-dasharray="5 5"/>
+<polyline points="111.3,116.0 114.7,116.0 117.5,116.0 119.4,116.0 119.9,116.0 119.1,116.0 117.0,116.0 113.9,116.0 111.3,116.0 112.7,116.0 115.5,116.0 119.3,116.0 123.7,116.0 128.2,116.0 132.4,116.0 135.7,116.0 137.7,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0" fill="none" stroke="#93b6e1" stroke-width="1.1" opacity=".65" stroke-dasharray="3 4"/>
+<polyline points="138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,115.9 138.2,114.1 138.2,110.3 138.2,105.1 138.2,99.1 138.2,93.0 138.2,87.4 138.2,82.9 138.2,80.1 138.2,79.5 138.2,79.5 138.2,79.5 138.2,79.5 138.2,79.5 138.2,79.5 138.2,79.5 138.2,79.5 138.2,79.5 138.2,79.5 138.2,79.5 138.2,79.5" fill="none" stroke="#93b6e1" stroke-width="1.1" opacity=".65" stroke-dasharray="3 4"/>
+<polyline points="220.7,116.0 220.7,116.0 220.7,116.0 220.7,116.0 220.7,116.0 220.7,116.0 220.7,116.0 220.7,116.0 220.7,116.0 219.2,116.0 216.2,116.0 212.1,116.0 207.4,116.0 202.6,116.0 198.1,116.0 194.6,116.0 192.4,116.0 191.9,116.0 191.9,116.0 191.9,116.0 191.9,116.0 191.9,116.0 191.9,116.0 191.9,116.0 191.9,116.0 191.9,116.0 191.9,116.0 191.9,116.0 191.9,116.0" fill="none" stroke="#93b6e1" stroke-width="1.1" opacity=".65" stroke-dasharray="3 4"/>
+<circle cx="138.2" cy="116.0" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<text x="138.2" y="119.3" text-anchor="middle" fill="#f1f6ff" font-family="Arial,sans-serif" font-weight="700" font-size="9.5">L</text>
+<circle cx="138.2" cy="79.5" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<circle cx="165.0" cy="116.0" r="12.8" fill="none" stroke="#75acff" stroke-opacity=".55" stroke-width="1"/>
+<circle cx="165.0" cy="116.0" r="9.7" fill="#216bc7" stroke="#b4d4ff" stroke-width="1.4"/>
+<text x="165.0" y="119.3" text-anchor="middle" fill="#f1f6ff" font-family="Arial,sans-serif" font-weight="700" font-size="9.5">J</text>
+<circle cx="191.9" cy="116.0" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<text x="191.9" y="119.3" text-anchor="middle" fill="#f1f6ff" font-family="Arial,sans-serif" font-weight="700" font-size="9.5">L</text>
+<circle cx="246.6" cy="116.0" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<circle cx="62.3" cy="116.0" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<text x="62.3" y="119.3" text-anchor="middle" fill="#f1f6ff" font-family="Arial,sans-serif" font-weight="700" font-size="9.5">H</text>
+<circle cx="155.4" cy="45.9" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<text x="155.4" y="49.2" text-anchor="middle" fill="#f1f6ff" font-family="Arial,sans-serif" font-weight="700" font-size="9.5">9</text>
+<circle cx="112.6" cy="116.0" r="3.6" fill="#f5f8ff" stroke="#10223a"/>
+</svg>

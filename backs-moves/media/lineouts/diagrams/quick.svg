@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 335 172" fill="none">
+<title>Quick — animation frame</title>
+<path d="M46.0 0v172" stroke="#7190b1" opacity=".33" />
+<path d="M117.0 0v172" stroke="#7190b1" opacity=".33" stroke-dasharray="5 5"/>
+<path d="M251.4 0v172" stroke="#7190b1" opacity=".33" stroke-dasharray="5 5"/>
+<polyline points="174.6,116.0 174.6,116.0 174.6,116.0 174.6,116.0 174.3,116.0 172.4,116.0 169.3,116.0 165.3,116.0 160.7,116.0 155.9,116.0 151.0,116.0 146.5,116.0 142.7,116.0 139.8,116.0 138.3,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0 138.2,116.0" fill="none" stroke="#93b6e1" stroke-width="1.1" opacity=".65" stroke-dasharray="3 4"/>
+<polyline points="201.5,116.0 201.5,116.0 201.5,116.0 201.5,116.0 201.1,116.0 199.3,116.0 196.2,116.0 192.2,116.0 187.6,116.0 182.7,116.0 177.9,116.0 173.4,116.0 169.6,116.0 166.7,116.0 165.2,116.0 165.0,116.0 165.0,116.0 165.0,116.0 165.0,116.0 165.0,116.0 165.0,116.0 165.0,116.0 165.0,116.0 165.0,116.0 165.0,116.0 165.0,116.0 165.0,116.0 165.0,116.0" fill="none" stroke="#93b6e1" stroke-width="1.1" opacity=".65" stroke-dasharray="3 4"/>
+<circle cx="111.3" cy="116.0" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<text x="111.3" y="119.3" text-anchor="middle" fill="#f1f6ff" font-family="Arial,sans-serif" font-weight="700" font-size="9.5">L</text>
+<circle cx="138.2" cy="116.0" r="12.8" fill="none" stroke="#75acff" stroke-opacity=".55" stroke-width="1"/>
+<circle cx="138.2" cy="116.0" r="9.7" fill="#216bc7" stroke="#b4d4ff" stroke-width="1.4"/>
+<text x="138.2" y="119.3" text-anchor="middle" fill="#f1f6ff" font-family="Arial,sans-serif" font-weight="700" font-size="9.5">J</text>
+<circle cx="165.0" cy="116.0" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<text x="165.0" y="119.3" text-anchor="middle" fill="#f1f6ff" font-family="Arial,sans-serif" font-weight="700" font-size="9.5">L</text>
+<circle cx="228.4" cy="116.0" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<circle cx="62.3" cy="116.0" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<circle cx="155.4" cy="45.9" r="8.1" fill="#223953" stroke="#9fb2c8" stroke-width="1.4"/>
+<circle cx="101.7" cy="116.0" r="3.6" fill="#f5f8ff" stroke="#10223a"/>
+</svg>
