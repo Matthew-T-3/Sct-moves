@@ -1,0 +1,813 @@
+
+
+<!doctype html>
+<html lang="en-IE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Lineouts</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/shield.svg">
+  <link rel="preload" href="../assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/site.css">
+  <script defer src="../assets/moves.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to moves</a>
+<header class="topbar">
+  <div class="shell header-inner">
+    <a class="brand" href="../lineouts/" aria-label="St Andrews SCT Moves home">
+      <img src="../assets/shield.svg" alt="" width="38" height="44"><span class="wordmark"><strong>St Andrews SCT</strong><small>Moves</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Move categories">
+      <a href="../lineouts/" aria-current="page">Lineouts</a>
+    
+      <a href="../backs-moves/">Backs Moves</a>
+    
+      <a href="../team-moves/">Team Moves</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="shell main-shell" tabindex="-1">
+  <section class="masthead" aria-labelledby="page-title">
+    <img class="cover cover-lineouts" src="../assets/covers/lineouts.webp" alt="" fetchpriority="high">
+    <div class="saltire" aria-hidden="true"></div>
+    <div class="mast-text">
+      <h1 id="page-title">Lineouts</h1>
+      <div class="mast-meta"><span><svg class="icon" width="17" height="17" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#book"></use></svg> 12 moves</span><span class="meta-divider" aria-hidden="true"></span><span>5-man / 4-man / 6-man</span></div>
+    </div>
+  </section>
+
+  <section class="library" aria-labelledby="library-title">
+    <div class="tools-row">
+      <h2 id="library-title">Move library</h2>
+      <form class="filters" role="search" aria-label="Filter Lineouts">
+        <label class="search-shell"><svg class="icon" width="19" height="19" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#search"></use></svg><span class="visually-hidden">Search moves</span><input id="move-search" type="search" placeholder="Search moves…" autocomplete="off" maxlength="160"></label>
+        <label class="select-shell tag-filter"><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#filter"></use></svg><span class="visually-hidden">Filter by tag</span><select id="tag-filter"><option value="">All tags</option><option value="5-man">5-man</option><option value="4-man">4-man</option><option value="6-man">6-man</option></select><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#chevron"></use></svg></label>
+      </form>
+    </div>
+    <p id="result-status" class="filter-status visually-hidden" role="status" aria-live="polite" aria-atomic="true"></p>
+    
+      <ul class="cards" id="cards">
+        
+        <li class="card" data-move="rocket" data-tags="[&quot;5-man&quot;]" data-search="Rocket Rocket The loaded 3-pod at the front goes straight up. First move in the 5-man lineout. The loaded 3-pod at the front goes straight up. 5-man">
+          <div class="board">
+            <img class="board-diagram" src="../media/lineouts/diagrams/rocket.svg" alt="Rocket lineout. Throw. Hooker throws straight down the line to the jumper." loading="lazy">
+            <div class="card-tags"><span class="tag">5-man</span></div>
+            <span class="play-disc" aria-hidden="true"><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#play"></use></svg></span>
+          </div>
+          <div class="card-copy">
+            <div class="card-title"><h3><button class="move-open" type="button" data-open="rocket" aria-haspopup="dialog">Rocket</button></h3></div>
+            <p>The loaded 3-pod at the front goes straight up.</p>
+          </div>
+        </li>
+        
+        <li class="card" data-move="missile" data-tags="[&quot;5-man&quot;]" data-search="Missile Missile The 1st man dummies a lift on the 2nd, then runs through to lift the 3rd with the 4th. The 1st man dummies a lift on the 2nd, then runs through to lift the 3rd with the 4th. 5-man">
+          <div class="board">
+            <img class="board-diagram" src="../media/lineouts/diagrams/missile.svg" alt="Missile lineout. Throw. Hooker throws to the middle." loading="lazy">
+            <div class="card-tags"><span class="tag">5-man</span></div>
+            <span class="play-disc" aria-hidden="true"><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#play"></use></svg></span>
+          </div>
+          <div class="card-copy">
+            <div class="card-title"><h3><button class="move-open" type="button" data-open="missile" aria-haspopup="dialog">Missile</button></h3></div>
+            <p>The 1st man dummies a lift on the 2nd, then runs through to lift the 3rd with the 4th.</p>
+          </div>
+        </li>
+        
+        <li class="card" data-move="mortar" data-tags="[&quot;5-man&quot;]" data-search="Mortar Mortar Same as Missile, but the pod forms at the back of the line. Same as Missile, but the pod forms at the back of the line. 5-man">
+          <div class="board">
+            <img class="board-diagram" src="../media/lineouts/diagrams/mortar.svg" alt="Mortar lineout. Throw. Hooker throws all the way to the back." loading="lazy">
+            <div class="card-tags"><span class="tag">5-man</span></div>
+            <span class="play-disc" aria-hidden="true"><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#play"></use></svg></span>
+          </div>
+          <div class="card-copy">
+            <div class="card-title"><h3><button class="move-open" type="button" data-open="mortar" aria-haspopup="dialog">Mortar</button></h3></div>
+            <p>Same as Missile, but the pod forms at the back of the line.</p>
+          </div>
+        </li>
+        
+        <li class="card" data-move="role" data-tags="[&quot;5-man&quot;]" data-search="Role Role The front jumper runs around the back lifter to the middle. The front jumper runs around the back lifter to the middle. The hooker calls the option. 5-man 1 · Front Role, then ONE The middle man runs back to the front and becomes the back lifter — the old back lifter steps in as the jumper. 2 · Middle Role, then TWO The middle man stays put — the two nearest lifters come in and lift him in the middle. 2A · Dummy Role, then TWO A The 2nd and 4th men close in on the middle man for a dummy lift. 3 · Back Role, then THREE The middle man runs to the back and becomes the front lifter — the first of the back two is the jumper.">
+          <div class="board">
+            <img class="board-diagram" src="../media/lineouts/diagrams/role-front.svg" alt="Role · 1 · Front lineout. Throw. Hooker throws to the jumper." loading="lazy">
+            <div class="card-tags"><span class="tag">5-man</span></div>
+            <span class="play-disc" aria-hidden="true"><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#play"></use></svg></span>
+          </div>
+          <div class="card-copy">
+            <div class="card-title"><h3><button class="move-open" type="button" data-open="role" aria-haspopup="dialog">Role</button></h3></div>
+            <p>The front jumper runs around the back lifter to the middle.</p>
+          </div>
+        </li>
+        
+        <li class="card" data-move="quick" data-tags="[&quot;4-man&quot;]" data-search="Quick Quick The 2nd and 3rd men run to the front. The 1st and 3rd lift the 2nd. The 2nd and 3rd men run to the front. The 1st and 3rd lift the 2nd. 4-man">
+          <div class="board">
+            <img class="board-diagram" src="../media/lineouts/diagrams/quick.svg" alt="Quick lineout. Throw. Hooker throws to the front." loading="lazy">
+            <div class="card-tags"><span class="tag">4-man</span></div>
+            <span class="play-disc" aria-hidden="true"><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#play"></use></svg></span>
+          </div>
+          <div class="card-copy">
+            <div class="card-title"><h3><button class="move-open" type="button" data-open="quick" aria-haspopup="dialog">Quick</button></h3></div>
+            <p>The 2nd and 3rd men run to the front. The 1st and 3rd lift the 2nd.</p>
+          </div>
+        </li>
+        
+        <li class="card" data-move="three" data-tags="[&quot;4-man&quot;]" data-search="Three Three Dummy Quick, then back to the middle. The 2nd and 4th lift the 3rd. Dummy Quick, then back to the middle. The 2nd and 4th lift the 3rd. 4-man">
+          <div class="board">
+            <img class="board-diagram" src="../media/lineouts/diagrams/three.svg" alt="Three lineout. Throw. Hooker throws to the middle." loading="lazy">
+            <div class="card-tags"><span class="tag">4-man</span></div>
+            <span class="play-disc" aria-hidden="true"><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#play"></use></svg></span>
+          </div>
+          <div class="card-copy">
+            <div class="card-title"><h3><button class="move-open" type="button" data-open="three" aria-haspopup="dialog">Three</button></h3></div>
+            <p>Dummy Quick, then back to the middle. The 2nd and 4th lift the 3rd.</p>
+          </div>
+        </li>
+        
+        <li class="card" data-move="wolf" data-tags="[&quot;4-man&quot;]" data-search="Wolf Wolf Decoy lift in the middle. The 4th man runs around to take it at the front. Decoy lift in the middle. The 4th man runs around to take it at the front. 4-man">
+          <div class="board">
+            <img class="board-diagram" src="../media/lineouts/diagrams/wolf.svg" alt="Wolf lineout. Throw. Hooker throws to the front." loading="lazy">
+            <div class="card-tags"><span class="tag">4-man</span></div>
+            <span class="play-disc" aria-hidden="true"><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#play"></use></svg></span>
+          </div>
+          <div class="card-copy">
+            <div class="card-title"><h3><button class="move-open" type="button" data-open="wolf" aria-haspopup="dialog">Wolf</button></h3></div>
+            <p>Decoy lift in the middle. The 4th man runs around to take it at the front.</p>
+          </div>
+        </li>
+        
+        <li class="card" data-move="m-slip" data-tags="[&quot;4-man&quot;]" data-search="M Slip M Slip The 3rd man slips in front of the 2nd. The 1st and 2nd lift the 3rd. The 3rd man slips in front of the 2nd. The 1st and 2nd lift the 3rd. 4-man">
+          <div class="board">
+            <img class="board-diagram" src="../media/lineouts/diagrams/m-slip.svg" alt="M Slip lineout. Throw. Hooker throws to the front." loading="lazy">
+            <div class="card-tags"><span class="tag">4-man</span></div>
+            <span class="play-disc" aria-hidden="true"><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#play"></use></svg></span>
+          </div>
+          <div class="card-copy">
+            <div class="card-title"><h3><button class="move-open" type="button" data-open="m-slip" aria-haspopup="dialog">M Slip</button></h3></div>
+            <p>The 3rd man slips in front of the 2nd. The 1st and 2nd lift the 3rd.</p>
+          </div>
+        </li>
+        
+        <li class="card" data-move="m-slip-1" data-tags="[&quot;4-man&quot;]" data-search="M Slip 1 M Slip 1 Dummy M Slip. The 1st man runs through, and the 1st and 4th lift the 2nd in the middle. Dummy M Slip. The 1st man runs through, and the 1st and 4th lift the 2nd in the middle. 4-man">
+          <div class="board">
+            <img class="board-diagram" src="../media/lineouts/diagrams/m-slip-1.svg" alt="M Slip 1 lineout. Throw. Hooker throws to the middle." loading="lazy">
+            <div class="card-tags"><span class="tag">4-man</span></div>
+            <span class="play-disc" aria-hidden="true"><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#play"></use></svg></span>
+          </div>
+          <div class="card-copy">
+            <div class="card-title"><h3><button class="move-open" type="button" data-open="m-slip-1" aria-haspopup="dialog">M Slip 1</button></h3></div>
+            <p>Dummy M Slip. The 1st man runs through, and the 1st and 4th lift the 2nd in the middle.</p>
+          </div>
+        </li>
+        
+        <li class="card" data-move="front" data-tags="[&quot;6-man&quot;]" data-search="Front 1 1 and 8 lift 4 at the front, then form a maul. 1 and 8 lift 4 at the front, then form a maul. 6-man">
+          <div class="board">
+            <img class="board-diagram" src="../media/lineouts/diagrams/front.svg" alt="Front lineout. Throw. Hooker throws to 4 at the front." loading="lazy">
+            <div class="card-tags"><span class="tag">6-man</span></div>
+            <span class="play-disc" aria-hidden="true"><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#play"></use></svg></span>
+          </div>
+          <div class="card-copy">
+            <div class="card-title"><h3><button class="move-open" type="button" data-open="front" aria-haspopup="dialog">Front</button></h3><span class="card-call">Call 1</span></div>
+            <p>1 and 8 lift 4 at the front, then form a maul.</p>
+          </div>
+        </li>
+        
+        <li class="card" data-move="middle" data-tags="[&quot;6-man&quot;]" data-search="Middle 2 8 and 6 lift 5 in the middle, then form a maul. 8 and 6 lift 5 in the middle, then form a maul. 6-man">
+          <div class="board">
+            <img class="board-diagram" src="../media/lineouts/diagrams/middle.svg" alt="Middle lineout. Transfer. The forwards and hooker join at the back; the ball passes from 5 to 4, then directly to hooker 2." loading="lazy">
+            <div class="card-tags"><span class="tag">6-man</span></div>
+            <span class="play-disc" aria-hidden="true"><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#play"></use></svg></span>
+          </div>
+          <div class="card-copy">
+            <div class="card-title"><h3><button class="move-open" type="button" data-open="middle" aria-haspopup="dialog">Middle</button></h3><span class="card-call">Call 2</span></div>
+            <p>8 and 6 lift 5 in the middle, then form a maul.</p>
+          </div>
+        </li>
+        
+        <li class="card" data-move="tank" data-tags="[&quot;6-man&quot;]" data-search="Tank Tank 8 and 3 lift 5, then it becomes a maul. 8 and 3 lift 5, then it becomes a maul. 6-man">
+          <div class="board">
+            <img class="board-diagram" src="../media/lineouts/diagrams/tank.svg" alt="Tank lineout. Drive. The maul drives with the ball at the back." loading="lazy">
+            <div class="card-tags"><span class="tag">6-man</span></div>
+            <span class="play-disc" aria-hidden="true"><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#play"></use></svg></span>
+          </div>
+          <div class="card-copy">
+            <div class="card-title"><h3><button class="move-open" type="button" data-open="tank" aria-haspopup="dialog">Tank</button></h3></div>
+            <p>8 and 3 lift 5, then it becomes a maul.</p>
+          </div>
+        </li>
+        
+      </ul>
+      <div id="no-results" class="empty" hidden><div class="empty-symbol"><svg class="icon" width="29" height="29" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#search"></use></svg></div><h3>No matching moves</h3><p>Try another name, call or tag.</p><button type="button" class="clear-button" id="clear-filters">Clear filters</button></div>
+      <template id="detail-rocket">
+  <div class="detail-heading">
+    <p class="detail-tags"><span class="tag">5-man</span></p>
+    <h2 id="move-title">Rocket</h2>
+    <p class="call-row"><span>Call</span><strong>Rocket</strong></p>
+    <p class="detail-description">First move in the 5-man lineout. The loaded 3-pod at the front goes straight up.</p>
+  </div>
+  
+    
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=1" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=1" title="Rocket lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/rocket.svg" alt="Rocket lineout. Throw. Hooker throws straight down the line to the jumper.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      
+      
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. The line runs straight out from touch, in front of the hooker. The front 3-pod is already loaded — lifters either side of the jumper.</li><li>Call. Hooker calls “ROCKET”.</li><li>Move. Jumper goes straight up — no dummy, no step.</li><li>Throw. Hooker throws straight down the line to the jumper.</li><li>Catch. Jumper wins it at the top.</li><li>Lower. Lifters bring the jumper down with the ball.</li><li>Deliver. Ball goes to the scrum-half.</li></ol>
+      
+      
+    </div>
+  </div>
+
+  
+</template><template id="detail-missile">
+  <div class="detail-heading">
+    <p class="detail-tags"><span class="tag">5-man</span></p>
+    <h2 id="move-title">Missile</h2>
+    <p class="call-row"><span>Call</span><strong>Missile</strong></p>
+    <p class="detail-description">The 1st man dummies a lift on the 2nd, then runs through to lift the 3rd with the 4th.</p>
+  </div>
+  
+    
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=2" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=2" title="Missile lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/missile.svg" alt="Missile lineout. Throw. Hooker throws to the middle.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      
+      
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Same as before — front 3-pod loaded, line straight out from the hooker.</li><li>Call. Hooker calls “MISSILE”.</li><li>Dummy. The 1st man fakes a lift on the 2nd man.</li><li>Run through. The 1st man runs past the 2nd to the 3rd man. The 4th man closes in from behind.</li><li>Lift. The 1st and 4th men lift the 3rd man.</li><li>Throw. Hooker throws to the middle.</li><li>Catch. Jumper wins it at the top.</li><li>Lower. Lifters bring him down with the ball.</li><li>Deliver. Ball goes to the scrum-half.</li></ol>
+      
+      
+    </div>
+  </div>
+
+  
+</template><template id="detail-mortar">
+  <div class="detail-heading">
+    <p class="detail-tags"><span class="tag">5-man</span></p>
+    <h2 id="move-title">Mortar</h2>
+    <p class="call-row"><span>Call</span><strong>Mortar</strong></p>
+    <p class="detail-description">Same as Missile, but the pod forms at the back of the line.</p>
+  </div>
+  
+    
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=3" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=3" title="Mortar lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/mortar.svg" alt="Mortar lineout. Throw. Hooker throws all the way to the back.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      
+      
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Same as before — front 3-pod loaded, line straight out from the hooker.</li><li>Call. Hooker calls “MORTAR”.</li><li>Dummy. Front lifter dummies. Back lifter turns around.</li><li>Close. Back lifter runs to the back of the line and meets the back two.</li><li>Lift. The back pod lifts the jumper.</li><li>Throw. Hooker throws all the way to the back.</li><li>Catch. Jumper wins it at the top.</li><li>Lower. Lifters bring him down with the ball.</li><li>Deliver. Ball goes to the scrum-half.</li></ol>
+      
+      
+    </div>
+  </div>
+
+  
+</template><template id="detail-role">
+  <div class="detail-heading">
+    <p class="detail-tags"><span class="tag">5-man</span></p>
+    <h2 id="move-title">Role</h2>
+    
+    <p class="detail-description">The front jumper runs around the back lifter to the middle. The hooker calls the option.</p>
+  </div>
+  
+    <label class="option-choice">Role option
+      <span class="select-shell"><select data-options><option value="0">1 · Front</option><option value="1">2 · Middle</option><option value="2">2A · Dummy</option><option value="3">3 · Back</option></select><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#chevron"></use></svg></span>
+    </label>
+    <div data-option-panel></div>
+    <template data-option="0">
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=4&amp;option=1" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=4&amp;option=1" title="Role · 1 · Front lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/role-front.svg" alt="Role · 1 · Front lineout. Throw. Hooker throws to the jumper.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      <p class="call-row"><span>Call</span><strong>Role, then ONE</strong></p>
+      <p class="option-description">The middle man runs back to the front and becomes the back lifter — the old back lifter steps in as the jumper.</p>
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Loaded pod at the front, two at the back.</li><li>Call. Hooker calls “ROLE”.</li><li>Role. The front jumper runs around the back lifter to the middle.</li><li>Number. Hooker calls “ONE”.</li><li>Option 1. The middle man runs back to the front and becomes the back lifter — the old back lifter steps in as the jumper.</li><li>Lift. Jumper goes up.</li><li>Throw. Hooker throws to the jumper.</li><li>Catch. Jumper wins it at the top.</li><li>Lower. Lifters bring him down with the ball.</li><li>Deliver. Ball goes to the scrum-half.</li></ol>
+      
+      
+    </div>
+  </div>
+</template><template data-option="1">
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=4&amp;option=2" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=4&amp;option=2" title="Role · 2 · Middle lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/role-middle.svg" alt="Role · 2 · Middle lineout. Throw. Hooker throws to the jumper.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      <p class="call-row"><span>Call</span><strong>Role, then TWO</strong></p>
+      <p class="option-description">The middle man stays put — the two nearest lifters come in and lift him in the middle.</p>
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Loaded pod at the front, two at the back.</li><li>Call. Hooker calls “ROLE”.</li><li>Role. The front jumper runs around the back lifter to the middle.</li><li>Number. Hooker calls “TWO”.</li><li>Option 2. The middle man stays put — the two nearest lifters come in and lift him in the middle.</li><li>Lift. Jumper goes up.</li><li>Throw. Hooker throws to the jumper.</li><li>Catch. Jumper wins it at the top.</li><li>Lower. Lifters bring him down with the ball.</li><li>Deliver. Ball goes to the scrum-half.</li></ol>
+      
+      
+    </div>
+  </div>
+</template><template data-option="2">
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=4&amp;option=4" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=4&amp;option=4" title="Role · 2A · Dummy lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/role-dummy.svg" alt="Role · 2A · Dummy lineout. Throw. Hooker throws to the front.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      <p class="call-row"><span>Call</span><strong>Role, then TWO A</strong></p>
+      <p class="option-description">The 2nd and 4th men close in on the middle man for a dummy lift.</p>
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Loaded pod at the front, two at the back.</li><li>Call. Hooker calls “ROLE”.</li><li>Role. The front jumper runs around the back lifter to the middle.</li><li>Number. Hooker calls “TWO A”.</li><li>Option 2A. The 2nd and 4th men close in on the middle man for a dummy lift.</li><li>Run. The 3rd and 4th men run straight through the line to the front; the 2nd man goes around them.</li><li>Lift. The 1st and 4th men lift the 3rd man.</li><li>Throw. Hooker throws to the front.</li><li>Catch. Jumper wins it at the top.</li><li>Lower. Lifters bring him down with the ball.</li><li>Deliver. Ball goes to the scrum-half.</li></ol>
+      
+      
+    </div>
+  </div>
+</template><template data-option="3">
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=4&amp;option=3" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=4&amp;option=3" title="Role · 3 · Back lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/role-back.svg" alt="Role · 3 · Back lineout. Throw. Hooker throws to the jumper.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      <p class="call-row"><span>Call</span><strong>Role, then THREE</strong></p>
+      <p class="option-description">The middle man runs to the back and becomes the front lifter — the first of the back two is the jumper.</p>
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Loaded pod at the front, two at the back.</li><li>Call. Hooker calls “ROLE”.</li><li>Role. The front jumper runs around the back lifter to the middle.</li><li>Number. Hooker calls “THREE”.</li><li>Option 3. The middle man runs to the back and becomes the front lifter — the first of the back two is the jumper.</li><li>Lift. Jumper goes up.</li><li>Throw. Hooker throws to the jumper.</li><li>Catch. Jumper wins it at the top.</li><li>Lower. Lifters bring him down with the ball.</li><li>Deliver. Ball goes to the scrum-half.</li></ol>
+      
+      
+    </div>
+  </div>
+</template>
+  
+</template><template id="detail-quick">
+  <div class="detail-heading">
+    <p class="detail-tags"><span class="tag">4-man</span></p>
+    <h2 id="move-title">Quick</h2>
+    <p class="call-row"><span>Call</span><strong>Quick</strong></p>
+    <p class="detail-description">The 2nd and 3rd men run to the front. The 1st and 3rd lift the 2nd.</p>
+  </div>
+  
+    
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=6" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=6" title="Quick lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/quick.svg" alt="Quick lineout. Throw. Hooker throws to the front.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      
+      
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Four-man line-out. Hooker at touch, the 1st man at the front, and the 2nd, 3rd and 4th men walk in to the middle of the line-out.</li><li>Call. Hooker calls “QUICK”.</li><li>Quick. The 2nd and 3rd men run to the front to join the 1st man.</li><li>Lift. The 1st and 3rd men lift the 2nd man.</li><li>Throw. Hooker throws to the front.</li><li>Catch. The 2nd man wins it at the top.</li><li>Lower. Lifters bring him down with the ball.</li><li>Deliver. Ball goes to the scrum-half.</li></ol>
+      
+      
+    </div>
+  </div>
+
+  
+</template><template id="detail-three">
+  <div class="detail-heading">
+    <p class="detail-tags"><span class="tag">4-man</span></p>
+    <h2 id="move-title">Three</h2>
+    <p class="call-row"><span>Call</span><strong>Three</strong></p>
+    <p class="detail-description">Dummy Quick, then back to the middle. The 2nd and 4th lift the 3rd.</p>
+  </div>
+  
+    
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=7" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=7" title="Three lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/three.svg" alt="Three lineout. Throw. Hooker throws to the middle.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      
+      
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Four-man line-out. Hooker at touch, the 1st man at the front, and the 2nd, 3rd and 4th men walk in to the middle of the line-out.</li><li>Call. Hooker calls “THREE”.</li><li>Dummy. The 2nd and 3rd men run to the front as if it’s a Quick.</li><li>Back. They go back to the middle, where the 4th man meets them.</li><li>Lift. The 2nd and 4th men lift the 3rd man.</li><li>Throw. Hooker throws to the middle.</li><li>Catch. The 3rd man wins it at the top.</li><li>Lower. Lifters bring him down with the ball.</li><li>Deliver. Ball goes to the scrum-half.</li></ol>
+      
+      
+    </div>
+  </div>
+
+  
+</template><template id="detail-wolf">
+  <div class="detail-heading">
+    <p class="detail-tags"><span class="tag">4-man</span></p>
+    <h2 id="move-title">Wolf</h2>
+    <p class="call-row"><span>Call</span><strong>Wolf</strong></p>
+    <p class="detail-description">Decoy lift in the middle. The 4th man runs around to take it at the front.</p>
+  </div>
+  
+    
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=8" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=8" title="Wolf lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/wolf.svg" alt="Wolf lineout. Throw. Hooker throws to the front.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      
+      
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Four-man line-out. Hooker at touch, the 1st man stands 1m in front of the 5m line, and the 2nd, 3rd and 4th men walk in to the middle of the line-out.</li><li>Call. Hooker calls “WOLF”.</li><li>Run in. The 1st man runs to the 2nd and 3rd men in the middle.</li><li>Decoy lift. The 1st and 3rd men lift the 2nd man in the middle.</li><li>Around. The 4th man runs around the pod to the front.</li><li>Throw. Hooker throws to the front.</li><li>Catch. The 4th man takes it on the run.</li><li>Keep going. He keeps running with the ball.</li></ol>
+      
+      
+    </div>
+  </div>
+
+  
+</template><template id="detail-m-slip">
+  <div class="detail-heading">
+    <p class="detail-tags"><span class="tag">4-man</span></p>
+    <h2 id="move-title">M Slip</h2>
+    <p class="call-row"><span>Call</span><strong>M Slip</strong></p>
+    <p class="detail-description">The 3rd man slips in front of the 2nd. The 1st and 2nd lift the 3rd.</p>
+  </div>
+  
+    
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=9" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=9" title="M Slip lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/m-slip.svg" alt="M Slip lineout. Throw. Hooker throws to the front.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      
+      
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Four-man line-out. Hooker at touch, the 1st man at the front, and the 2nd, 3rd and 4th men walk in to the middle of the line-out.</li><li>Call. Hooker calls “M SLIP”.</li><li>Slip. The 3rd man slips in front of the 2nd man.</li><li>Lift. The 1st and 2nd men lift the 3rd man.</li><li>Throw. Hooker throws to the front.</li><li>Catch. The 3rd man wins it at the top.</li><li>Lower. Lifters bring him down with the ball.</li><li>Deliver. Ball goes to the scrum-half.</li></ol>
+      
+      
+    </div>
+  </div>
+
+  
+</template><template id="detail-m-slip-1">
+  <div class="detail-heading">
+    <p class="detail-tags"><span class="tag">4-man</span></p>
+    <h2 id="move-title">M Slip 1</h2>
+    <p class="call-row"><span>Call</span><strong>M Slip 1</strong></p>
+    <p class="detail-description">Dummy M Slip. The 1st man runs through, and the 1st and 4th lift the 2nd in the middle.</p>
+  </div>
+  
+    
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=10" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=10" title="M Slip 1 lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/m-slip-1.svg" alt="M Slip 1 lineout. Throw. Hooker throws to the middle.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      
+      
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Four-man line-out. Hooker at touch, the 1st man at the front, and the 2nd, 3rd and 4th men walk in to the middle of the line-out.</li><li>Call. Hooker calls “M SLIP 1”.</li><li>Dummy. The 3rd man slips in front of the 2nd man, as if it’s an M Slip.</li><li>Through. The 1st man runs straight through the line to the middle while the 3rd man steps out of the way.</li><li>Lift. The 1st and 4th men lift the 2nd man in the middle.</li><li>Throw. Hooker throws to the middle.</li><li>Catch. The 2nd man wins it at the top.</li><li>Lower. Lifters bring him down with the ball.</li><li>Deliver. Ball goes to the scrum-half.</li></ol>
+      
+      
+    </div>
+  </div>
+
+  
+</template><template id="detail-front">
+  <div class="detail-heading">
+    <p class="detail-tags"><span class="tag">6-man</span></p>
+    <h2 id="move-title">Front</h2>
+    <p class="call-row"><span>Call</span><strong>1</strong></p>
+    <p class="detail-description">1 and 8 lift 4 at the front, then form a maul.</p>
+  </div>
+  
+    
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=11" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=11" title="Front lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/front.svg" alt="Front lineout. Throw. Hooker throws to 4 at the front.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      
+      
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Same six-man numbering as Tank: 1, 4, 8, 5, 6, 3, with hooker 2 at touch.</li><li>Call. Hooker calls ‘1’.</li><li>Set. 1 and 8 prepare to lift 4 at the front.</li><li>Lift. Numbers 1 and 8 lift number 4.</li><li>Throw. Hooker throws to 4 at the front.</li><li>Catch. 4 wins the ball.</li><li>Lower. 1 and 8 bring 4 down.</li><li>Maul. The next two forwards bind onto the pod, just as in Tank.</li><li>Transfer. The forwards and hooker join at the back; the ball passes from 4 to 6, then directly to hooker 2.</li><li>Drive. The maul drives forward with the ball transferred to hooker 2 at the back.</li></ol>
+      
+      
+    </div>
+  </div>
+
+  
+</template><template id="detail-middle">
+  <div class="detail-heading">
+    <p class="detail-tags"><span class="tag">6-man</span></p>
+    <h2 id="move-title">Middle</h2>
+    <p class="call-row"><span>Call</span><strong>2</strong></p>
+    <p class="detail-description">8 and 6 lift 5 in the middle, then form a maul.</p>
+  </div>
+  
+    
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=12" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=12" title="Middle lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/middle.svg" alt="Middle lineout. Transfer. The forwards and hooker join at the back; the ball passes from 5 to 4, then directly to hooker 2.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      
+      
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Same six-man numbering as Tank: 1, 4, 8, 5, 6, 3, with hooker 2 at touch.</li><li>Call. Hooker calls ‘2’.</li><li>Set. 8 and 6 prepare to lift 5 in the middle.</li><li>Lift. Numbers 8 and 6 lift number 5.</li><li>Throw. Hooker throws to 5 in the middle.</li><li>Catch. 5 wins the ball.</li><li>Lower. 8 and 6 bring 5 down.</li><li>Maul. The next two forwards bind onto the pod, just as in Tank.</li><li>Transfer. The forwards and hooker join at the back; the ball passes from 5 to 4, then directly to hooker 2.</li><li>Drive. The maul drives forward with the ball transferred to hooker 2 at the back.</li></ol>
+      
+      
+    </div>
+  </div>
+
+  
+</template><template id="detail-tank">
+  <div class="detail-heading">
+    <p class="detail-tags"><span class="tag">6-man</span></p>
+    <h2 id="move-title">Tank</h2>
+    <p class="call-row"><span>Call</span><strong>Tank</strong></p>
+    <p class="detail-description">8 and 3 lift 5, then it becomes a maul.</p>
+  </div>
+  
+    
+  
+  
+  
+  <div class="detail-grid">
+    
+  
+    <div class="media-stack">
+      
+        <section class="media-section" aria-label="Animation">
+          <div class="media-heading"><h3>Animation</h3><a class="text-link" href="../media/lineouts/sct-lineouts.html?move=5" target="_blank" rel="noopener">Open full screen <svg class="icon" width="15" height="15" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#external"></use></svg></a></div>
+          <iframe class="animation-frame" data-src="../media/lineouts/sct-lineouts.html?move=5" title="Tank lineout animation" sandbox="allow-scripts" referrerpolicy="no-referrer" allowfullscreen></iframe>
+        </section>
+      
+      
+      
+        <details class="extra"><summary>Still diagram</summary>
+          <img class="full-diagram" src="../media/lineouts/diagrams/tank.svg" alt="Tank lineout. Drive. The maul drives with the ball at the back.">
+        </details>
+      
+    </div>
+  
+
+    <div class="detail-text">
+      
+      
+      
+        <h3>Steps</h3><ol class="steps"><li>Set-up. Six-man line-out. Hooker (2) at touch, then 1, 4, 8, 5, 6 and 3 down the line.</li><li>Call. Hooker calls “TANK”.</li><li>Make room. Number 6 jumps to the side so 3 can run past him.</li><li>Tank. Number 3 runs up from the back to join 8 and lift 5.</li><li>Lift. 8 and 3 lift number 5.</li><li>Throw. Hooker (2) throws to 5.</li><li>Catch. Number 5 wins it at the top.</li><li>Lower. The pod brings him down with the ball — the front of the maul.</li><li>Maul. Numbers 4 and 6 hit the middle of the pod.</li><li>Maul. Numbers 2 and 1 hit in at the back. The ball is put back to 6, then to 1.</li><li>Drive. The maul drives with the ball at the back.</li></ol>
+      
+      
+    </div>
+  </div>
+
+  
+</template>
+      <noscript><p>Enable JavaScript to search and open move details.</p></noscript>
+    
+  </section>
+</main>
+<footer class="footer"><div class="shell footer-inner"><div><img src="../assets/shield.svg" alt="" width="21" height="24"><span>St Andrews SCT</span></div><span>Moves</span></div></footer>
+<dialog id="move-dialog" aria-labelledby="move-title">
+  <button type="button" class="close-dialog" aria-label="Close move" autofocus><svg class="icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#close"></use></svg></button>
+  <div class="dialog-scroll"><div id="detail-content"></div></div>
+</dialog>
+</body></html>
